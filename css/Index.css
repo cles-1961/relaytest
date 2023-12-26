@@ -1,0 +1,266 @@
+@charset "UTF-8";
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; }
+
+::-webkit-scrollbar-track {
+  padding: 4px;
+  background: rgba(226, 162, 77, 0.2); }
+
+::-webkit-scrollbar-thumb {
+  background: #e2a24d; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e9b979; }
+
+* {
+  font-family: 'Lato', 微軟正黑體;
+  position: relative;
+  transition-timing-function: ease-in-out;
+  letter-spacing: 3px; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background: #191b23;
+  display: flex; }
+
+.H_br {
+  width: 100%;
+  height: 0px;
+  margin: 5px 0px;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  box-sizing: border-box; }
+
+.p_2px {
+  padding: 2px; }
+
+.p_5px {
+  padding: 5px; }
+
+.p_10px {
+  padding: 10px; }
+
+.p_20px {
+  padding: 20px; }
+
+.p_top_bottom_10px {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.m_0px {
+  margin: 0px; }
+
+.m_top_bottom_5px {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.m_top_bottom_10px {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.m_bottom_5px {
+  margin-bottom: 5px; }
+
+.m_bottom_10px {
+  margin-bottom: 10px; }
+
+.h_max_20vh {
+  max-height: 20vh;
+  overflow: auto; }
+
+.h_max_40vh {
+  max-height: 40vh;
+  overflow: auto; }
+
+.h_max_60vh {
+  max-height: 60vh;
+  overflow: auto; }
+
+.h_max_80vh {
+  max-height: 80vh;
+  overflow: auto; }
+
+.w_100 {
+  width: 100%; }
+
+.h_100 {
+  height: 100%; }
+
+.h_auto {
+  height: auto; }
+
+.bg_white {
+  background: white; }
+
+.Page .Menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0px;
+  right: 0px;
+  padding: 16px;
+  transform: translateX(100%);
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(0.695, 0, 0.31, 1);
+  background: rgba(25, 27, 35, 0.99);
+  border: 1px solid rgba(255, 255, 255, 0.2); }
+  .Page .Menu::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: -50px;
+    right: 100%;
+    transition-duration: 0.4s; }
+  .Page .Menu::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/gear.png);
+    background-size: 100%;
+    transform: translateX(-100%);
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.695, 0, 0.31, 1);
+    box-sizing: border-box; }
+  .Page .Menu:hover {
+    transform: translateX(0%); }
+    .Page .Menu:hover::before {
+      width: 40px;
+      transform: translateX(-100%) rotate(180deg); }
+  .Page .Menu .setting_entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-height: 50px;
+    padding: 5px;
+    margin-bottom: 10px;
+    transition-duration: 0.4s;
+    overflow: hidden; }
+    .Page .Menu .setting_entry.one_entry {
+      padding: 0px 10px;
+      margin-bottom: 0px; }
+    .Page .Menu .setting_entry.close {
+      max-height: 0px;
+      padding: 0px;
+      margin-bottom: 0px; }
+  .Page .Menu .V_setting_entry {
+    flex-direction: column; }
+    .Page .Menu .V_setting_entry select {
+      width: 100%; }
+      .Page .Menu .V_setting_entry select option:checked {
+        background: #e2a24d; }
+  .Page .Menu .loadFile_area {
+    width: 100%;
+    border: 1px dashed rgba(255, 255, 255, 0.7);
+    padding: 20px 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition-duration: 0.4s; }
+    .Page .Menu .loadFile_area:hover {
+      border: 1px dashed rgba(255, 255, 255, 0);
+      background: rgba(255, 255, 255, 0.9); }
+      .Page .Menu .loadFile_area:hover .Label {
+        color: #374556; }
+  .Page .Menu .Label {
+    color: white;
+    flex: 1;
+    transition-duration: 0.4s;
+    text-align: center;
+    user-select: none; }
+  .Page .Menu input, .Page .Menu select {
+    width: 60%;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+    text-align-last: center;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box; }
+  .Page .Menu input[type="file"] {
+    display: none; }
+
+.Page .Button {
+  color: white;
+  padding: 10px 20px;
+  font-size: 12px;
+  border: 1px solid white;
+  user-select: none;
+  cursor: pointer;
+  transition-duration: 0.3s; }
+  .Page .Button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #374556; }
+  .Page .Button.disable {
+    cursor: no-drop;
+    opacity: 0.5; }
+    .Page .Button.disable:hover {
+      border-color: #e2a24d;
+      color: #e2a24d;
+      background: rgba(255, 255, 255, 0); }
+
+.br_line {
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  width: 100%;
+  margin: 20px 10px; }
+
+.btn_disable {
+  opacity: 0.2;
+  pointer-events: none; }
+
+.group_area {
+  margin: 0px 20px; }
+
+.Card {
+  min-width: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin-left: 20px;
+  padding: 10px; }
+  .Card:first-child {
+    margin-left: 0px; }
+  .Card .Title, .Card .Label {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    flex: 1; }
+  .Card .Label {
+    font-size: 12px; }
+  .Card .groupName_area {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 0px;
+    padding-right: 10px;
+    margin-bottom: 10px; }
+    .Card .groupName_area .Title, .Card .groupName_area input {
+      font-size: 16px;
+      font-weight: 700;
+      color: white; }
+  .Card .isInstead .Label {
+    color: #e2a24d; }
+  .Card input {
+    flex: 1;
+    width: 30%;
+    color: white;
+    font-size: 12px;
+    padding: 0px;
+    text-align: center;
+    text-align-last: center;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box; }
+
+.ori_dataCard {
+  border: 5px solid white;
+  padding: 10px;
+  margin-right: 26px; }

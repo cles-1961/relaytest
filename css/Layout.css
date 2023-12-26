@@ -1,0 +1,13 @@
+.V_Layout {
+  display: flex;
+  flex-direction: column; }
+
+.H_Layout, .H_spaceBetween_Layout {
+  display: flex;
+  flex-direction: row; }
+
+.H_spaceBetween_Layout {
+  justify-content: space-between; }
+
+.alignItems_center {
+  align-items: center; }

@@ -1,0 +1,95 @@
+@charset "UTF-8";
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; }
+
+::-webkit-scrollbar-track {
+  padding: 4px;
+  background: rgba(226, 162, 77, 0.2); }
+
+::-webkit-scrollbar-thumb {
+  background: #e2a24d; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e9b979; }
+
+* {
+  font-family: 'Lato', 微軟正黑體;
+  position: relative;
+  transition-timing-function: ease-in-out;
+  letter-spacing: 3px; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background: #191b23;
+  display: flex; }
+
+.H_br {
+  width: 100%;
+  height: 0px;
+  margin: 5px 0px;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  box-sizing: border-box; }
+
+.p_2px {
+  padding: 2px; }
+
+.p_5px {
+  padding: 5px; }
+
+.p_10px {
+  padding: 10px; }
+
+.p_20px {
+  padding: 20px; }
+
+.p_top_bottom_10px {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.m_0px {
+  margin: 0px; }
+
+.m_top_bottom_5px {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.m_top_bottom_10px {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.m_bottom_5px {
+  margin-bottom: 5px; }
+
+.m_bottom_10px {
+  margin-bottom: 10px; }
+
+.h_max_20vh {
+  max-height: 20vh;
+  overflow: auto; }
+
+.h_max_40vh {
+  max-height: 40vh;
+  overflow: auto; }
+
+.h_max_60vh {
+  max-height: 60vh;
+  overflow: auto; }
+
+.h_max_80vh {
+  max-height: 80vh;
+  overflow: auto; }
+
+.w_100 {
+  width: 100%; }
+
+.h_100 {
+  height: 100%; }
+
+.h_auto {
+  height: auto; }
+
+.bg_white {
+  background: white; }

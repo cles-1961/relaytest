@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>分組最佳化</title>
+    <link rel="stylesheet" href="css/Layout.css">
+    <link rel="stylesheet" href="css/Index.css">
+  </head>
+  <body> 
+    <div class="Page">
+      <div class="H_Layout p_20px">
+        <div class="Card ori_dataCard" v-if="Data_Array.length != 0">
+          <div class="H_spaceBetween_Layout p_2px">
+            <div class="Title" v-for="(key, keyI) in show_dataKeys">{{key}}</div>
+          </div>
+          <div class="V_Layout h_max_60vh">
+            <div class="H_spaceBetween_Layout p_2px" v-for="(Item, Index) in Data_Array">
+              <div class="Label" v-for="(key, keyI) in show_dataKeys">{{Item[key]}}</div>
+            </div>
+          </div>
+          <div class="H_br"></div>
+          <div class="H_spaceBetween_Layout p_2px">
+            <div class="Label">人數</div>
+            <div class="Label">{{Data_Array.length}}</div>
+          </div>
+          <div class="H_spaceBetween_Layout p_2px">
+            <div class="Label">平均值</div>
+            <div class="Label">{{Data_avg}}</div>
+          </div>
+          <div class="H_spaceBetween_Layout p_2px">
+            <div class="Label">總和</div>
+            <div class="Label">{{Data_sum}}</div>
+          </div>
+        </div>
+        <div class="group_area H_Layout">
+          <div class="Card" v-for="(groupItem, Index) in Group">
+            <div class="H_spaceBetween_Layout groupName_area">
+              <div class="Title">組別名稱</div>
+              <input v-model="groupItem.name" type="text">
+            </div>
+            <div class="H_spaceBetween_Layout p_2px">
+              <div class="Title" v-for="(key, keyI) in show_dataKeys">{{key}}</div>
+            </div>
+            <div class="V_Layout h_max_60vh" v-if="groupItem.Datas.length !== 0">
+              <div class="H_spaceBetween_Layout p_2px" v-for="(Item, Index) in groupItem.Datas" :class="{'isInstead': Item.isInstead}">
+                <div class="Label" v-for="(key, keyI) in show_dataKeys">{{Item[key]}}</div>
+              </div>
+            </div>
+            <div class="H_br"></div>
+            <div class="H_spaceBetween_Layout p_2px">
+              <div class="Label">人數</div>
+              <div class="Label">{{groupItem.Datas.length}}</div>
+            </div>
+            <div class="H_spaceBetween_Layout p_2px">
+              <div class="Label">平均值</div>
+              <div class="Label">{{groupItem.average}}</div>
+            </div>
+            <div class="H_spaceBetween_Layout p_2px">
+              <div class="Label">總和</div>
+              <div class="Label">{{groupItem.sum}}</div>
+            </div>
+            <div class="V_Layout h_max_40vh" v-else>
+              <div class="Label">無資料</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Menu">
+        <label class="H_spaceBetween_Layout loadFile_area">
+          <div class="Label">載入資料</div>
+          <input type="file" accept=".csv" ref="DataFile" @change="read_Files">
+        </label>
+        <div class="setting_entry">
+          <div class="Label">群組數量</div>
+          <input v-model="Group_Num" type="number" min="2">
+        </div>
+        <div class="setting_entry" title="分配演算法會依據此數值分配群組">
+          <div class="Label">分組依據</div>
+          <input v-model="calc_value">
+        </div>
+            <template>
+              <div class="Button" v-if="Data_Array.length !== 0" @click="calc_group()">取得組合</div>
+              <div class="Button disable" v-else title="請先「載入資料」">取得組合</div>
+            </template>
+        <div class="br_line"></div>
+        <div class="V_setting_entry w_100" title="可設定預覽資料所要顯示的標題">
+          <div class="Label m_bottom_10px">顯示的標題<br>(按著 Ctrl 多選)</div>
+          <select v-model="show_dataKeys" multiple size="4">
+            <option v-for="(key, keyI) in dataKeys" :value="key">{{key}}</option>
+          </select>
+        </div>
+        <div class="br_line"></div>
+        <label class="setting_entry" :class="{'one_entry': !isInstead}" title="程式會自動計算最公平代跑員">
+          <div class="Label">是否代跑</div>
+          <input v-model="isInstead" type="checkbox">
+        </label>
+        <div class="setting_entry" :class="{'close': !isInstead}" title="跑第二次時成績退步的程度">
+          <div class="Label">代跑係數</div>
+          <input v-model.number="insteadCoe">
+        </div>
+        <div class="br_line"></div>
+        <div class="setting_entry">
+          <div class="Label">檔案類型</div>
+          <select v-model="file_format">
+            <option value="CSV">CSV</option>
+            <!--option(value="JSON") JSON-->
+          </select>
+        </div>
+        <div class="setting_entry">
+          <div class="Label">檔案名稱</div>
+          <input v-model="file_name">
+        </div>
+            <template>
+              <div class="Button" v-if="Group[0].Datas.length !== 0" @click="download_datas()">輸出數據</div>
+              <div class="Button disable" v-else title="分組後才能輸出數據">輸出數據</div>
+            </template>
+      </div>
+    </div>
+    <script src="js/Asset/jquery-3.3.1.js"></script>
+    <script src="js/Asset/2.6.10-vue.min.js"></script>
+    <script src="js/Asset/json2csv.js"></script>
+    <script src="js/BaseFcn.js"></script>
+    <script src="js/Index.js"></script>
+  </body>
+</html>
